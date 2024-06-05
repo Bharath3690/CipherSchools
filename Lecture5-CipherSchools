@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./test.css">
+    <title>Page Title</title>
+</head>
+<body>
+    <h1>Heading 1</h1>
+    <h2>heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>heading 6</h6>
+    <p>This is a paragraph</p>
+    <a href="https://www.google.co.in/">Go to google</a>
+    <img src="https://dictionary.cambridge.org/images/thumb/book_noun_001_01679.jpg?version=6.0.17" alt="this is book">
+    <blockquote cite="https://en.wikipedia.org/wiki/Harry_Potter">Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people).</blockquote>
+    <q>The para about the Harry potter</q> 
+    <p><abbr title="World Health Organisation">WHO</abbr>is a good organization.</p>
+    <p><address>
+        taught by bharath <br> 
+        visit me on LinkkedIn!
+    </address></p>
+    <h5>Unordered list</h5>
+    <ul>
+        <li>Cofee</li>
+        <li>Milk</li>
+        <li>Tea</li>
+    </ul>
+    <h5>Ordered list</h5>
+    <ol>
+        <li>Water</li>
+        <li>petrol</li>
+        <li>Diesel</li>
+    </ol>
+    <dl>
+        <dt>Cofee</dt>
+        <dd>-- This is dark brown drink --</dd>
+        <dt>Milk</dt>
+        <dd>--This is a White drink</dd>
+    </dl>
+    <div>
+        <p id="myself">This is <u>Bharath.</u> <br/>Bharath lives in palasa<span style="color: red;">Andhrapradesh</span></p>
+        <div>
+            <p>This is 2nd paragraph</p>
+        </div>
+    </div>
+    <div>
+        <p>para 3</p>
+        <p>para 4</p>
+    </div>
+    <p>para 5</p>
+    <p>para 6</p>
+    <p>my name is <i>Bharath</i><br /> i live in india</p>
+    <div>
+        <a href="https://google.com" target="blank">Google</a>
+    </div>
+    <p class="intropara">myself bharath i am living in ap and my daily activities is to workshipping the god and make myself proud everyday by doing the the activites which will iprove me.</p>
+    <button>click me</button>
+</body>
+</html>
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* simple selector */
+/* p{
+    text-align: center;
+} */
+/* #myself{
+    text-align: center;
+} */
+.intropara{
+    text-decoration: dashed;
+    text-align: center;
+    color: chartreuse;
+}
+p,#myself,h1{
+    text-align: center;
+    color: aqua ;
+}
+/* combiantor selector */
+/* for combinator slector
+1.descended selector
+2.child selector
+3.adjacent sibling
+4.general sibiling */
+/* div p {
+    background-color:red;
+}
+div > p {
+    background-color:cyan;
+} */
+div + p{
+    background-color: cornflowerblue;
+}
+/* above is adjacent sibiling selector*/
+
+div ~p:hover{
+    background-color: coral;
+}
+
+/* pseudo element selector */
+div ~ p::first-letter{
+    color: rebeccapurple;
+}
+
+a[target]{
+    background-color: cyan;
+}

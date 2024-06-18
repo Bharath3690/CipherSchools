@@ -1,0 +1,120 @@
+var x=50
+console.log(x)
+{
+    let x=5
+    console.log(x)
+}
+const y=55
+console.log(y)
+
+// var x = function(x,y){
+//     return x+y
+// };
+
+// console.log(x(5,6))
+
+// const x = (x,y) => {
+//     return x+y
+// };
+
+const z = (x,y) => x+y;
+console.log(z(5,6))
+
+
+// spread operator used for self iteration it create a array itself to store elmeents
+
+// const mynum = [25,12,50,77,-4]
+// let maxval = Math.max(...mynum);
+// console.log(maxval);
+
+// for-of loop 
+const mynums = [11,12,45,54,-4]
+let sum = 0
+for(let num of mynums){
+    sum +=num
+}
+console.log(sum)
+
+const str = "bharath"
+let cnt = 0
+for(let ch of str){
+    cnt++
+}
+console.log("countofcharacetrs: "+cnt)
+
+// map object in javascript
+//map in js are used to hold key value pairs and key can be of any datatype
+const fruits = new Map([
+    ["apples",500],
+    ["bananas",300],
+    ["oranges",200],
+]);
+console.log(fruits)
+console.log(fruits.get("oranges"));
+
+// set in js
+// set in js is used to store only the unique values and each value can occur only once in set
+// The values can be of any type
+const letters = new Set();
+letters.add("a")
+letters.add("b")
+letters.add("a")
+console.log(letters)
+
+class Car{
+    constructor(name,mfgyear){
+        this.name = name;
+        this.mfgyear = mfgyear;
+    }
+}
+
+const mycar1 =new Car("suzuki",500)
+const mycar2 = new Car("Mercedes",300)
+console.log(mycar1)
+console.log(mycar2)
+
+// javascript Promises
+// producingcode - that can take some time
+// consuming code - that must wait for result
+// A promise is an objecct that link producing code and consuming code
+
+const myfunc = () => {
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            console.log("This is inside promise");
+            resolve();
+        },200);
+    });
+};
+
+myfunc().then(
+    ()=>{
+        console.log("Resolved");
+    })
+    .catch(()=>{
+        console.log("Rejected")
+    });
+
+// symbol in js used for representing unique values
+const person = {
+    firstname:"john",
+    lastname:"wick",
+    age:10,
+    eyecolor:"blue",
+};
+let id = Symbol("id");
+person[id] = 121342;
+console.log(person);
+
+const addtwonum = (a,b=10)=>a+b;
+console.log(addtwonum(10));
+
+// functions
+const addnum = (...args) => {
+    let sum =0;
+    for(let arg of args){
+        sum+=arg;
+    }
+    return sum;
+};
+console.log(addnum(10,14,16,36,1,34))

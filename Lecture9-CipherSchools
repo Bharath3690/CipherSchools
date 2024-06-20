@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="es6.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <H1 onclick="this.innerHTML='This is after my click!'">Javascript</H1>
+    <div class="btn">
+        <button onclick="displaydate()">timebtn</button>
+        <p id="demo"></p>
+        <input type="text" id="firstname" onchange="upperCase()"/>
+    </div>
+    <!-- <div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color: blue;width:120px;height:40px">
+        Mouse Over Me
+    </div> -->
+    <div onmousedown="mDown(this)" onmouseup="mUp(this)" style="background-color: blue;width:120px;height:40px">
+
+    </div>
+    <script>
+        function displaydate(){
+            document.getElementById("demo").innerHTML = new Date()
+        }
+        function upperCase(){
+            const x = document.getElementById("firstname");
+            x.value = x.value.toUpperCase();
+        }
+        function mOver(obj){
+            obj.innerHTML = "Thank You"
+        }
+        function mOut(obj){
+            obj.innerHTML = "Mouse Over me"
+        }
+        function mDown(obj){
+            obj.style.background = "cyan";
+            obj.innerHTML = "Release me";
+        }
+        function mUp(obj){
+            obj.style.background = "red";
+            obj.innerHTML = "Relese";
+        }
+    </script>
+</body>
+</html>

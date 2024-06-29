@@ -1,0 +1,28 @@
+import{ useState } from "react";
+import Task from "../components/Task";
+const ToDoScreens  = ()=>{
+    const[taskList,setTaskList] = useState([]);
+    return(
+        <div className="Screen">
+            <h1 className="ui heading cent">To-Do List</h1>
+            <div>
+            <button onClick={(e)=>{
+              setTaskList([...taskList,{
+                title:"Go to gym",
+                description:"Going to gym good for muscle health",
+              },])
+            }} className="ui inverted secondary button">
+                Add task
+            </button>
+            {taskList.map((task)=><Task />)}
+           </div>
+           </div>
+    )
+}
+
+export default ToDoScreens
+const Task = () =>{
+    return <h5>Task</h5>;
+};
+
+export default Task;

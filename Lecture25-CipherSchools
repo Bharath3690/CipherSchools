@@ -1,0 +1,57 @@
+import AddTask from "./components/Addtask";
+import ToDoScreens from "./screens/ToDoScreens";
+import { useState } from "react";
+import {createBrowserRouter, Route, RouterProvider} from "react-router-dom";
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element:<ToDoScreens/>,
+    },
+    {
+        path: "/add-task",
+        element:<AddTask/>,
+    },
+
+]);
+const App = ()=>{
+    const [tasks, setTasks] = useState([]);
+    return <RouterProvider router={router}/>;
+};
+export default App;
+
+import{ useState } from "react";
+import Task from "../components/Task";
+import AddTask from "../components/Addtask";
+const ToDoScreens  = ()=>{
+    const[taskList,setTaskList] = useState([]);
+    let addNewtask = (task)=>{
+      setTaskList([...taskList,{...task,createdDate:new Date()}])
+    };
+    return(
+        <>
+        <div className="Screen">
+            <h1 className="ui heading cent">To-Do List</h1>
+            <div>
+            <button onClick={(e)=>{
+              setTaskList([...taskList,{
+                title:"g to gmy",
+                description:"Going to gym good for muscle health",
+                createdDate:new Date(),
+              },])
+            }} className="ui inverted secondary button">
+                Add task
+            </button>
+            <section>
+            <div className="ui cards">
+            {taskList.map((task,index)=>(<Task task={task} key={index}/>))}
+            </div>
+            </section>         
+           </div>
+           {/* <AddTask onSubmit={addNewtask}/> */}
+           </div>
+           
+           </>
+    )
+}
+
+export default ToDoScreens

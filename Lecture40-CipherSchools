@@ -1,0 +1,74 @@
+// const addNumbers=(...args) => {
+//     let sum = 0;
+//     args.forEach((arg)=> sum += arg);
+//     return sum;
+// };
+// console.log(addNumbers(4,5,1,-2,10,5));
+
+// const http = require("http");
+// const server = http.createServer((req, res)=>{
+//     res.write("This is some response from your first Node.js server");
+//     res.end();
+// });
+
+// server.listen(8080, ()=>{
+//     console.log("Server is running");
+
+// });
+
+// rest-representational state transfer
+// rest api uses http requests
+// post,get,put,patch and delete 5 requests
+// Rest-api will have two parts one is url and second one is http methods
+// for unique identification of the backended server we have to use the rest-api parts
+//import Task from "../src/models/Task";
+require("./appMongoose");
+const express = require("express");
+const app = express();
+// the entir ebackened in this app by the aboveline 
+app.use(express.json());
+app.get("/",(req,res)=>{
+    res.send("This is some response from your first node.js server")
+});
+app.get("/add",(req,res)=>{
+    let {a: firstNumber,b: secondNumber} = req.query;
+    let sum = parseInt(firstNumber) + parseInt(secondNumber);
+    res.send({sum});
+})
+app.post("/add-task", async(req,res)=>{
+    const task = new Task({ title: "Test Task",description: "Test Task Desc"});
+    await task.save();
+    return res.status(201).send({message: "Saved!"})
+});
+app.get("/get-tasks",async(req, res) => {
+    const taskList = await Task.find();
+    return res.status(200).send(taskList);
+});
+app.put("/update/:taskId",async(req,res)=>{
+    const {taskId} = req.params;
+    const updateResult = await Task.updateOne(
+        {id: taskId},
+        {
+            $set: {...req.body},
+        }
+    );
+    if(!updateResult.matchedCount){
+        return res.status(404).send({message:`Tak with ID: ${taskId} was not found.`});
+
+    }
+    return res.status(200).send({message:"Update Success"});
+})
+app.delete("/delete-task/:taskId",async(req,res)=>{
+    const {taskId} = req.params;
+    const deleteResult = await Task.deleteOne(
+        {id: taskId});
+    if(!deleteResult.deleteCount){
+        return res.status(404).send({message:`Tak with ID: ${taskId} was not found.`});
+
+    }
+    return res.status(200).send({message:"Delete Success"});
+});
+app.listen(8080, ()=>{
+    console.log(`server is running`);
+});
+
